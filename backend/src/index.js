@@ -22,6 +22,10 @@ dotenv.config();
 
 const __dirname = path.resolve();
 const app = express();
+app.use(clerkMiddleware());
+
+app.use(express.json());
+
 const PORT = process.env.PORT;
 
 const httpServer = createServer(app);
@@ -34,8 +38,6 @@ app.use(
   })
 );
 
-app.use(express.json()); // to parse req.body
-app.use(clerkMiddleware()); // this will add auth to req obj => req.auth
 app.use(
   fileUpload({
     useTempFiles: true,
