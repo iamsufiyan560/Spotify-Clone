@@ -6,6 +6,8 @@ import {
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import LeftSidebar from "./components/LeftSidebar";
+import { PlaybackControls } from "./components/PlaybackControls";
+import AudioPlayer from "./components/AudioPlayer";
 
 const MainLayout = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -25,6 +27,7 @@ const MainLayout = () => {
         direction="horizontal"
         className="flex-1 flex h-full overflow-hidden p-2"
       >
+        <AudioPlayer />
         {/* left sidebar */}
         <ResizablePanel
           defaultSize={20}
@@ -57,6 +60,7 @@ const MainLayout = () => {
           </>
         )}
       </ResizablePanelGroup>
+      <PlaybackControls />
     </div>
   );
 };
